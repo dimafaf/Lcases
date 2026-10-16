@@ -1,0 +1,364 @@
+/* style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+:root {
+    --bg: #0d0d14;
+    --card: #1c1c2a;
+    --accent: #8b5cf6;
+    --accent-hover: #a78bfa;
+    --text: #ffffff;
+    --dim: #8a8a9e;
+    --success: #22c55e;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Свечение на фоне */
+.bg-glow {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    font-size: 42px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--dim);
+    font-size: 16px;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── КЕЙС ─────────────────────────────────── */
+
+.case-section {
+    padding: 40px 0;
+}
+
+.case-wrapper {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.case-window {
+    background: var(--card);
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 60px rgba(139, 92, 246, 0.2);
+}
+
+.case-track {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    transition: transform 4s cubic-bezier(0.15, 0.85, 0.25, 1);
+    will-change: transform;
+}
+
+.case-item {
+    width: 140px;
+    height: 140px;
+    margin: 0 10px;
+    background: #252537;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.case-item img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+/* Указатель в центре */
+.case-pointer {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, transparent, var(--accent), transparent);
+    transform: translateX(-50%);
+    z-index: 10;
+    box-shadow: 0 0 20px var(--accent);
+}
+
+.case-pointer::before,
+.case-pointer::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.case-pointer::before {
+    top: 0;
+    border-top: 12px solid var(--accent);
+}
+
+.case-pointer::after {
+    bottom: 0;
+    border-bottom: 12px solid var(--accent);
+}
+
+/* ─── КНОПКА ───────────────────────────────── */
+
+.open-btn {
+    display: block;
+    margin: 0 auto;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 18px 60px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
+}
+
+.open-btn:hover:not(:disabled) {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.6);
+}
+
+.open-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ─── РЕЗУЛЬТАТ ────────────────────────────── */
+
+.result {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, margin-top 0.5s ease;
+    margin-top: 0;
+}
+
+.result.show {
+    max-height: 400px;
+    margin-top: 30px;
+}
+
+.result-card {
+    background: var(--card);
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 60px rgba(139, 92, 246, 0.3);
+    animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.result-icon {
+    font-size: 80px;
+    margin-bottom: 10px;
+}
+
+.result-icon img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.result-name {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent-hover);
+    margin-bottom: 20px;
+}
+
+.result-label {
+    color: var(--dim);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.key-box {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto 15px;
+}
+
+.key-box input {
+    flex: 1;
+    background: #0d0d14;
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: 'Consolas', monospace;
+    font-size: 16px;
+    color: var(--accent-hover);
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.copy-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.copy-btn:hover {
+    background: var(--accent-hover);
+}
+
+.copy-btn.copied {
+    background: var(--success);
+}
+
+.hint {
+    color: var(--dim);
+    font-size: 14px;
+}
+
+.hint b {
+    color: var(--accent-hover);
+}
+
+/* ─── НАГРАДЫ ──────────────────────────────── */
+
+.rewards-section {
+    padding: 40px 0;
+}
+
+.rewards-section h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: var(--text);
+}
+
+.rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+}
+
+.reward-item {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    cursor: default;
+}
+
+.reward-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+}
+
+.reward-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.reward-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.reward-name {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 14px;
+}
+
+/* ─── ФУТЕР ────────────────────────────────── */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--dim);
+    font-size: 13px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── МОБИЛЬНЫЙ ───────────────────────────── */
+
+@media (max-width: 600px) {
+    header h1 { font-size: 32px; }
+    .case-window { height: 140px; }
+    .case-item { width: 100px; height: 100px; font-size: 45px; margin: 0 6px; }
+    .open-btn { padding: 16px 40px; font-size: 16px; }
+    .result-name { font-size: 22px; }
+    .key-box { flex-direction: column; }
+    .copy-btn { padding: 14px; }
+}

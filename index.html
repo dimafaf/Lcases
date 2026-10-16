@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PvP Case — Открой кейс</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<header>
+    <h1>🎁 PvP Case</h1>
+    <p class="subtitle">Открой кейс и получи эксклюзивный мод для PvP</p>
+</header>
+
+<main>
+
+    <!-- КЕЙС -->
+    <section class="case-section">
+
+        <div class="case-wrapper">
+            <div class="case-window">
+                <div class="case-pointer"></div>
+                <div class="case-track" id="caseTrack"></div>
+            </div>
+        </div>
+
+        <button id="openBtn" class="open-btn">🎁 ОТКРЫТЬ КЕЙС</button>
+
+        <!-- РЕЗУЛЬТАТ -->
+        <div class="result" id="result">
+            <div class="result-card">
+                <div class="result-icon" id="resultIcon">🧩</div>
+                <div class="result-name" id="resultName">PrankMod</div>
+                <div class="result-label">Твой ключ:</div>
+                <div class="key-box">
+                    <input type="text" id="keyInput" readonly>
+                    <button class="copy-btn" id="copyBtn">📋 Скопировать</button>
+                </div>
+                <p class="hint">Вставь ключ в лаунчере → вкладка <b>🔑 Активация ключей</b></p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- НАГРАДЫ -->
+    <section class="rewards-section">
+        <h2>Что можно выбить</h2>
+        <div class="rewards-grid" id="rewardsGrid"></div>
+    </section>
+
+</main>
+
+<footer>
+    <p>PvP Case &copy; 2026</p>
+</footer>
+
+<script src="keys.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
